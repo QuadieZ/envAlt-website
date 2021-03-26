@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
+
+// Pages
+import mainPage from './pages/mainPage';
+import branchSelect from './pages/branchSelect';
+import loginPage from './pages/loginPage';
+import dailyBranch from './pages/dailyBranch';
+import recommendPage from './pages/recommendPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={loginPage}/>
+          <Route exact path="/main" component={mainPage}/>
+          <Route exact path="/branchSelect" component={branchSelect}/>
+          <Route exact path="/dailyBranch" component={dailyBranch}/>
+          <Route exact path="/recommend" component={recommendPage}/>
+        </Switch>
+      </Router>
+
+      
     </div>
   );
 }

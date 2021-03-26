@@ -1,13 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  ChakraProvider,
+  extendTheme,
+} from "@chakra-ui/react"
+import { Global } from "@emotion/react"
+import fonts from "./font"
+
+const theme = extendTheme({
+  fonts: {
+    heading: "Saira",
+    body: "Saira",
+  },
+})
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ChakraProvider theme={theme}>
+    <Global styles={fonts} />
     <App />
-  </React.StrictMode>,
+
+  </ChakraProvider>
+  ,
   document.getElementById('root')
 );
 
