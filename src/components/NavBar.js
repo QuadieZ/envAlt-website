@@ -57,7 +57,6 @@ const NavDropdown = (props) => {
         _hover={{
           fontWeight: "semibold"
         }}>
-
         <HStack><Text>{label}</Text><Image src="/assets/dropdown.png" boxSize="2.5vh" /></HStack>
       </MenuButton>
       <MenuList>
