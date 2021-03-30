@@ -2,7 +2,7 @@ import { Box, HStack, Text, VStack } from "@chakra-ui/layout";
 import NavBar from "../components/NavBar";
 import { RecommendCard } from "../components/RecommendCard";
 
-const recommendPage = () => {
+const RecommendPage = () => {
     return (
         <Box backgroundColor="#B7F0F0" minHeight="100vh" minWidth="100%" position="absolute">
             <NavBar />
@@ -22,4 +22,4 @@ const recommendPage = () => {
     )
 }
 
-export default recommendPage;
+export default RecommendPage;

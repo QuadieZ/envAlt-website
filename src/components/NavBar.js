@@ -78,8 +78,8 @@ export default function NavBar() {
         <Flex alignItems={'center'}>
           <HStack spacing={8} alignItems={'center'}>
             <NavItem label="Home" url="/main" />
-            <NavDropdown label="Overall" oUrl="/branchSelect" dUrl="/branchSelect" mUrl="/branchSelect" />
-            <NavDropdown label="Branch" oUrl="/branchSelect" dUrl="/dailyBranch" mUrl="/branchSelect" />
+            <NavDropdown label="Overall"/>
+            <NavDropdown label="Branch" oUrl="/branchSelect" dUrl="/dailyBranch" />
             <NavItem label="Logout" url="/" />
             <NavPicItem url="/recommend"></NavPicItem>
           </HStack>

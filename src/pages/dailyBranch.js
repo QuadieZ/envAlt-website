@@ -4,7 +4,7 @@ import { CustomerTable, CarbonTable } from "../components/InfoTable";
 import NavBar from "../components/NavBar";
 
 
-const dailyBranch = () => {
+const DailyBranch = () => {
     return (
         <Box backgroundColor="#C9F8F2" minHeight="100vh" minWidth="100%" position="absolute">
             <NavBar />
@@ -24,9 +24,9 @@ const dailyBranch = () => {
                     <Text fontSize="xl">Estimation CO2 Release(หน่วย?)</Text>
                     <CarbonTable />
                 </VStack>
-            </VStack>
+                </VStack>
         </Box>
     )
 }
 
-export default dailyBranch;
+export default DailyBranch;
