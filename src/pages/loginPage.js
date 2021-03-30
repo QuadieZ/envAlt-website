@@ -1,9 +1,21 @@
 import { Input } from "@chakra-ui/input";
 import { Box, Flex, Grid, GridItem, Text, VStack } from "@chakra-ui/layout";
+import { useEffect } from "react";
 import { PassInput } from "../components/PassInput";
 import { LoginButton } from "../components/SaveEnButtons";
+import CityService from '../services/cityService';
 
-const loginPage = () => {
+const cityService = new CityService();
+
+export default function LoginPage()  {
+    useEffect(() => {
+        async function fetchData() {
+          const cities = await cityService.getCities();
+          console.log(cities)
+      }
+      fetchData();
+    });
+
     return (
         <Box minWidth="100vw" minHeight="100vh" backgroundColor="#D4F7FF">
             <VStack align="center" justify="center" minHeight="100vh">
@@ -38,5 +50,3 @@ const loginPage = () => {
         </Box>
     )
 }
-
-export default loginPage;

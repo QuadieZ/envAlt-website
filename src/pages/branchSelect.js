@@ -9,7 +9,7 @@ const SelectButtons = () => {
         <VStack spacing={14}>
             <Text fontSize="2xl">What do you want to see in branch </Text>
             <HStack spacing={24}>
-                <DailyButton />
+                <DailyButton url="/dailyBranch"/>
                 <MonthlyButton />
             </HStack>
         </VStack>
