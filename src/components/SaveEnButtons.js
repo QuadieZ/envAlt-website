@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 const SaveEnButtons = (props) => {
-    const { label, color, hcolor, mw, p,f } = props;
+    const { label, color, hcolor, mw, p,f} = props;
     return (
         <Button
             bg={color}
@@ -15,7 +15,6 @@ const SaveEnButtons = (props) => {
             borderRadius="50"
             boxShadow="0px 5px 0px rgba(0, 0, 0, 0.2);"
             position="relative"
-            onClick
         >
             {label}</Button>
     )
@@ -84,7 +83,7 @@ export const MonthlyButton = (props) => {
 
 export const LoginButton = () => {
     return (
-        <Link to="/main">
+        
             <SaveEnButtons
                 label="Enter"
                 color="#8BD9EB"
@@ -93,6 +92,6 @@ export const LoginButton = () => {
                 p="5"
                 f="xl"
             />
-        </Link>
+        
     )
 }

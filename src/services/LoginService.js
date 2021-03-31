@@ -4,7 +4,7 @@ export default class LoginService {
             'username': username,
             'password': password
         }
-        let host = "http://127.0.0.1:8000/users"
+        let host = "http://127.0.0.1:8000/login"
         let response = await fetch(host, {
             method: "POST",
             headers: {

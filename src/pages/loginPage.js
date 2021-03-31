@@ -1,20 +1,36 @@
 import { Input } from "@chakra-ui/input";
 import { Box, Flex, Grid, GridItem, Text, VStack } from "@chakra-ui/layout";
 import { useEffect } from "react";
+import { Button, InputGroup, InputRightElement } from "@chakra-ui/react"
 import { PassInput } from "../components/PassInput";
-import { LoginButton } from "../components/SaveEnButtons";
-import CityService from '../services/cityService';
+import LoginService from '../services/LoginService';
+import * as React from 'react'
+import { useHistory } from 'react-router-dom'
 
-const cityService = new CityService();
+const loginService = new LoginService();
 
-export default function LoginPage()  {
-    useEffect(() => {
-        async function fetchData() {
-          const cities = await cityService.getCities();
-          console.log(cities)
-      }
-      fetchData();
-    });
+
+export default function LoginPage() {
+    const history = useHistory();
+    async function login(u,p) {
+        const login = await loginService.checkLogin(u,p);
+        if (login) {
+            console.log('hi')
+            history.push("/main")
+        }
+    }
+
+
+    let username = React.createRef();
+    let password = React.createRef();
+
+    function handleClick() {
+        let u = username.current.value
+        let p = password.current.value
+        login(u,p);
+    }
+    const [show, setShow] = React.useState(false)
+    const showPass = () => setShow(!show)
 
     return (
         <Box minWidth="100vw" minHeight="100vh" backgroundColor="#D4F7FF">
@@ -38,12 +54,39 @@ export default function LoginPage()  {
                     px="8vw"
                     py="4vh">
                     <GridItem colSpan={2}><Text fontSize="lg">Username:</Text></GridItem>
-                    <GridItem colSpan={5}><Input backgroundColor="#EBEAEA" placeholder="Enter username"></Input></GridItem>
+                    <GridItem colSpan={5}><Input backgroundColor="#EBEAEA" placeholder="Enter username" ref={username}></Input></GridItem>
                     <GridItem colSpan={2}><Text fontSize="lg">Password:</Text></GridItem>
-                    <GridItem colSpan={5}><PassInput /></GridItem>
+                    <GridItem colSpan={5}>
+                        <InputGroup size="md">
+                            <Input
+                                pr="4.5rem"
+                                type={show ? "text" : "password"}
+                                placeholder="Enter password"
+                                backgroundColor="#EBEAEA"
+                                ref={password}
+                            />
+                            <InputRightElement width="4.5rem">
+                                <Button h="1.75rem" size="sm" onClick={showPass} backgroundColor="#DED9D9">
+                                    {show ? "Hide" : "Show"}
+                                </Button>
+                            </InputRightElement>
+                        </InputGroup>
+                    </GridItem>
                 </Grid>
                 <Flex width="60vw" justify="flex-end">
-                    <LoginButton />
+                    <Button
+                        bg="#8BD9EB"
+                        _hover={{ bg: "#83D1E2" }}
+                        minWidth="150"
+                        fontWeight="normal"
+                        fontSize="xl"
+                        py="5"
+                        borderRadius="50"
+                        boxShadow="0px 5px 0px rgba(0, 0, 0, 0.2);"
+                        position="relative"
+                        onClick={() => { handleClick() }}
+                    >
+                        Enter</Button>
                 </Flex>
             </VStack>
 
