@@ -2,9 +2,24 @@ import { Box, HStack, Text, VStack } from "@chakra-ui/layout";
 import { DatePickerField } from "../components/DatePickerField";
 import { CustomerTable, CarbonTable } from "../components/InfoTable";
 import NavBar from "../components/NavBar";
-
+import DailyBranchService from '../services/dailyBranchService';
+import { useState, useEffect } from 'react'
 
 const DailyBranch = () => {
+
+    const dailyBranchService = new DailyBranchService();
+    const [branchId, setBranchId] = useState("")
+
+    useEffect(() => {
+        if (branchId === "") {
+            async function fetchData() {
+                const info = await dailyBranchService.getBranchDailyInfo();
+                setBranchId(info.branchid)
+                console.log(info)
+            }
+            fetchData();
+        }
+    });
     return (
         <Box backgroundColor="#C9F8F2" minHeight="100vh" minWidth="100%" position="absolute">
             <NavBar />
@@ -24,7 +39,7 @@ const DailyBranch = () => {
                     <Text fontSize="xl">Estimation CO2 Release(หน่วย?)</Text>
                     <CarbonTable />
                 </VStack>
-                </VStack>
+            </VStack>
         </Box>
     )
 }

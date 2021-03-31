@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from "@chakra-ui/button"
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input"
 
-export const PassInput = () => {
+export const PassInput = ({setPass}) => {
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
+    let password = React.createRef();
+
+    useEffect(() => {
+        setPass(password)
+    },[password, setPass])
 
     return (
         <InputGroup size="md">

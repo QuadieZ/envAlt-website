@@ -1,7 +1,7 @@
 export default class branchService {
-    async getBranchOverallInfo(number=1) {
+    async getBranchOverallInfo(number="b1") {
         let host = "http://127.0.0.1:8000/branches/"
-        let response = await fetch(host + number, {
+        let response = await fetch(host + number + '/info', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
