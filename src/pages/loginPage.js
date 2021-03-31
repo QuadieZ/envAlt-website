@@ -3,15 +3,15 @@ import { Box, Flex, Grid, GridItem, Text, VStack } from "@chakra-ui/layout";
 import { useEffect } from "react";
 import { PassInput } from "../components/PassInput";
 import { LoginButton } from "../components/SaveEnButtons";
-import CityService from '../services/cityService';
+import LoginService from '../services/loginService';
 
-const cityService = new CityService();
+const loginService = new LoginService();
 
 export default function LoginPage()  {
     useEffect(() => {
         async function fetchData() {
-          const cities = await cityService.getCities();
-          console.log(cities)
+          const login = await loginService.checkLogin();
+          console.log(login)
       }
       fetchData();
     });
