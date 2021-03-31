@@ -3,7 +3,8 @@ import { DatePickerField } from "../components/DatePickerField";
 import { CustomerTable, CarbonTable } from "../components/InfoTable";
 import NavBar from "../components/NavBar";
 import DailyBranchService from '../services/dailyBranchService';
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import Line from "../components/Line";
 
 const DailyBranch = () => {
 
@@ -39,6 +40,13 @@ const DailyBranch = () => {
                     <Text fontSize="xl">Estimation CO2 Release(หน่วย?)</Text>
                     <CarbonTable />
                 </VStack>
+                <VStack width="70vw" align="flex-start">
+                    <Text fontSize="xl">Estimation CO2 Release(หน่วย?)</Text>
+                    <div style={{ height: 500, width: "100%", backgroundColor:"white"}}>
+                        <Line />
+                    </div>
+                </VStack>
+
             </VStack>
         </Box>
     )

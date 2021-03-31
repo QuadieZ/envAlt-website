@@ -10,7 +10,6 @@ import BranchSelect from './pages/BranchSelect';
 import LoginPage from './pages/LoginPage';
 import DailyBranch from './pages/DailyBranch';
 import RecommendPage from './pages/RecommendPage';
-
  
 function App() {
   return (
