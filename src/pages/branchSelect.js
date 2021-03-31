@@ -32,7 +32,7 @@ const AllAppliance = () => {
     )
 }
 
-const branchSelect = () => {
+const BranchSelect = () => {
     return (
         <Box backgroundColor="#D9FFFD" minHeight="100vh" minWidth="100%" position="absolute">
             <NavBar />
@@ -44,4 +44,4 @@ const branchSelect = () => {
     );
 };
 
-export default branchSelect;
+export default BranchSelect;

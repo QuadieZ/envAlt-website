@@ -5,12 +5,11 @@ import {
 } from "react-router-dom";
 
 // Pages
-import mainPage from './pages/mainPage';
-import branchSelect from './pages/branchSelect';
+import MainPage from './pages/MainPage';
+import BranchSelect from './pages/BranchSelect';
 import LoginPage from './pages/LoginPage';
-import dailyBranch from './pages/dailyBranch';
-import recommendPage from './pages/recommendPage';
-
+import DailyBranch from './pages/DailyBranch';
+import RecommendPage from './pages/RecommendPage';
  
 function App() {
   return (
@@ -18,10 +17,10 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={LoginPage}/>
-          <Route exact path="/main" component={mainPage}/>
-          <Route exact path="/branchSelect" component={branchSelect}/>
-          <Route exact path="/dailyBranch" component={dailyBranch}/>
-          <Route exact path="/recommend" component={recommendPage}/>
+          <Route exact path="/main" component={MainPage}/>
+          <Route exact path="/branchSelect" component={BranchSelect}/>
+          <Route exact path="/dailyBranch" component={DailyBranch}/>
+          <Route exact path="/recommend" component={RecommendPage}/>
         </Switch>
       </Router>
 

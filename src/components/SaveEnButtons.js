@@ -15,6 +15,7 @@ const SaveEnButtons = (props) => {
             borderRadius="50"
             boxShadow="0px 5px 0px rgba(0, 0, 0, 0.2);"
             position="relative"
+            onClick
         >
             {label}</Button>
     )

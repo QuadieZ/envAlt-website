@@ -2,7 +2,7 @@ import AppHeader from "../components/AppHeader";
 import { Box, VStack } from "@chakra-ui/layout";
 import { OverallButton, SpecificButton } from "../components/SaveEnButtons";
 
-const mainPage = () => {
+const MainPage = () => {
     return (
         <Box
             bgImage="url('/assets/mainBg.png')"
@@ -26,4 +26,4 @@ const mainPage = () => {
     );
 };
 
-export default mainPage;
+export default MainPage;
