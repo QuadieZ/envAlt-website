@@ -1,13 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { ResponsiveLine } from '@nivo/line';
-import data from '../data';
+import a from '../data';
 
+const f = [{
+    data:[]
+}]
 // make sure parent container have a defined height when using responsive component,
 // otherwise height will be 0 and no chart will be rendered.
 // website examples showcase many properties, you'll often use just a few of them.
-const Line = () => (
+const Line = ({d}) => {
+    useEffect(() => {
+        if (d !== undefined) {
+            for (let i=0;i<d.length;i++) {
+                f[0].data.push(d[i])
+                //console.log(f)
+            }
+        }
+    })
+    
+    
+    return(
     <ResponsiveLine
-    data={data}
+    data={f}
     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
     xScale={{ type: 'point' }}
     yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
@@ -18,9 +32,9 @@ const Line = () => (
         orient: 'bottom',
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 0,
-        legend: 'transportation',
-        legendOffset: 36,
+        tickRotation: -90,
+        legend: 'Time',
+        legendOffset: 45,
         legendPosition: 'middle'
     }}
     axisLeft={{
@@ -28,7 +42,7 @@ const Line = () => (
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'count',
+        legend: 'Electricity Usage',
         legendOffset: -40,
         legendPosition: 'middle'
     }}
@@ -39,10 +53,10 @@ const Line = () => (
     pointBorderColor={{ from: 'serieColor' }}
     pointLabelYOffset={-12}
     enableArea={true}
-    areaBaselineValue={40}
+    areaBaselineValue={20}
     areaOpacity={0.15}
     useMesh={true}
-/>
-);
+/>)
+};
 
 export default Line;

@@ -6,6 +6,7 @@ import {
     Th,
     Td,
 } from "@chakra-ui/react"
+import { useEffect, useState } from "react";
 
 const customerInfo = [
     {
@@ -22,6 +23,10 @@ const customerInfo = [
     }
 ]
 
+
+const customerInfoTemp = [
+]
+
 const carbonInfo = [
     {
         time: "13.00",
@@ -34,7 +39,7 @@ const carbonInfo = [
     {
         time: "15.00",
         carbon: 0.028
-    },    
+    },
 ]
 
 const InfoTable = (props) => {
@@ -54,10 +59,21 @@ const InfoTable = (props) => {
     )
 }
 
-export const CustomerTable = () => {
+export const CustomerTable = ({ data }) => {
+    const [customer, setCustomer] = useState([])
+    
+
+    useEffect(() => {
+        if (data !== []) {
+            setCustomer(data)
+        }
+
+    },[data])
+
+
     return (
         <InfoTable column="Number of People" color="#9EEFDC">
-            {customerInfo.map((el) => {
+            {customer.map((el) => {
                 return (
                     <Tr>
                         <Td textAlign="center">{el.time}</Td>
@@ -69,14 +85,22 @@ export const CustomerTable = () => {
     )
 }
 
-export const CarbonTable = () => {
+export const CarbonTable = ({ data }) => {
+    const [carbon, setCarbon] = useState([])
+    useEffect(() => {
+        if (data !== []) {
+            setCarbon(data)
+        }
+
+    },[data])
+
     return (
         <InfoTable column="Amount" color="#FFC3D5">
-            {carbonInfo.map((el) => {
+            {carbon.map((el) => {
                 return (
                     <Tr>
                         <Td textAlign="center">{el.time}</Td>
-                        <Td textAlign="center">{el.carbon}</Td>
+                        <Td textAlign="center">{el.amount}</Td>
                     </Tr>
                 )
             })}

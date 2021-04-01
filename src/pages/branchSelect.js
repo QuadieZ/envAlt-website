@@ -6,27 +6,45 @@ import '../scroll.css'
 import { useEffect, useState } from "react";
 import BranchService from '../services/branchService'
 
+const tempData = {
+    "branchid": "",
+    "appliances": [
+        {
+            "device": "",
+            "electricity": "",
+            "status": ""
+        },
+    ],
+    "electricity_payment_estimation": "",
+    "recommendation": [
+        {
+            "date": "",
+            "time": "",
+            "message": [""]
+        }
+    ]
+}
+const branchService = new BranchService();
 
 const BranchSelect = () => {
-    const branchService = new BranchService();
-    const [branchId, setBranchId] = useState("")
-    const [appliances, setAppliances] = useState()
-    const [payment, setPayment] = useState("")
-    const [recom, setRecom] = useState("")
+    
+    const [branchId, setBranchId] = useState(tempData.branchid)
+    const [appliances, setAppliances] = useState(tempData.appliances)
+    const [payment, setPayment] = useState(tempData.electricity_payment_estimation)
+    const [recommend, setRecommend] = useState(tempData.recommendation)
 
-        useEffect(() => {
-            if (branchId === "") {
-                async function fetchData() {
-                    const overallInfo = await branchService.getBranchOverallInfo();
-                    setBranchId(overallInfo.branchid)
-                    setAppliances(overallInfo.appliances)
-                    setPayment(overallInfo.electricity_payment_estimation)
-                    setRecom(overallInfo.recommendation)
-                    console.log(appliances)
-                }
-                fetchData();
+    useEffect(() => {
+        if (branchId === "") {
+            async function fetchData() {
+                const overallInfo = await branchService.getBranchOverallInfo();
+                setBranchId(overallInfo.branchid)
+                setAppliances(overallInfo.appliances)
+                setPayment(overallInfo.electricity_payment_estimation)
+                setRecommend(overallInfo.recommendation)
             }
-        });
+            fetchData();
+        }
+    },);
 
 
 
@@ -45,11 +63,11 @@ const BranchSelect = () => {
                     <VStack align="start" >
                         <Text fontSize="3xl">Electricity Usage</Text>
                         <Box bgColor="#C6F3D8" width="65vw" height="48vh" overflowY="scroll" pt={9} pb={7} align="center">
-                            <ApplianceCard data={appliances} />
+                            <ApplianceCard data={[appliances]}/>
                         </Box>
                     </VStack>
                     <HStack justify="flex-end" width="65vw">
-                        <Text fontSize="xl">Electricity Payment Estimation:</Text>
+                        <Text fontSize="xl">Electricity Payment Estimation: {payment} baht</Text>
                     </HStack>
                 </VStack>
             </VStack>
