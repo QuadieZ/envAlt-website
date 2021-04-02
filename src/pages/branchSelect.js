@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar.js";
 import { DailyButton, MonthlyButton } from "../components/SaveEnButtons.js";
 import '../scroll.css'
 import { useEffect, useState } from "react";
-import BranchService from '../services/branchService'
+import BranchService from '../services/branchService';
 
 const tempData = {
     "branchid": "",
@@ -27,7 +27,7 @@ const tempData = {
 const branchService = new BranchService();
 
 const BranchSelect = () => {
-    
+
     const [branchId, setBranchId] = useState(tempData.branchid)
     const [appliances, setAppliances] = useState(tempData.appliances)
     const [payment, setPayment] = useState(tempData.electricity_payment_estimation)
@@ -44,7 +44,9 @@ const BranchSelect = () => {
             }
             fetchData();
         }
-    },);
+    });
+
+
 
 
 
@@ -63,7 +65,7 @@ const BranchSelect = () => {
                     <VStack align="start" >
                         <Text fontSize="3xl">Electricity Usage</Text>
                         <Box bgColor="#C6F3D8" width="65vw" height="48vh" overflowY="scroll" pt={9} pb={7} align="center">
-                            <ApplianceCard data={[appliances]}/>
+                            <ApplianceCard data={[appliances]} />
                         </Box>
                     </VStack>
                     <HStack justify="flex-end" width="65vw">

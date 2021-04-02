@@ -2,7 +2,8 @@ import { Box, HStack, Text, VStack } from "@chakra-ui/layout";
 import NavBar from "../components/NavBar";
 import { RecommendCard } from "../components/RecommendCard";
 
-const RecommendPage = () => {
+const RecommendPage = ( ) => {
+
     return (
         <Box backgroundColor="#B7F0F0" minHeight="100vh" minWidth="100%" position="absolute">
             <NavBar />
@@ -13,7 +14,7 @@ const RecommendPage = () => {
                         <Text fontSize="3xl">Recommendations</Text>
                     </HStack>
                     <Box width="100%" height="100%" overflowY="scroll" pt={20} pb={7} align="center">
-                        <RecommendCard/>
+                        <RecommendCard />
                     </Box>
                 </VStack>
             </VStack>

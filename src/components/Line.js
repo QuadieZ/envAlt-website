@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { ResponsiveLine } from '@nivo/line';
-import a from '../data';
 
 const f = [{
     data:[]
@@ -8,17 +7,18 @@ const f = [{
 // make sure parent container have a defined height when using responsive component,
 // otherwise height will be 0 and no chart will be rendered.
 // website examples showcase many properties, you'll often use just a few of them.
-const Line = ({d}) => {
+const Line = ({data}) => {
+   
+    const [graph, setGraph] = useState([])
+
     useEffect(() => {
-        if (d !== undefined) {
-            for (let i=0;i<d.length;i++) {
-                f[0].data.push(d[i])
-                //console.log(f)
-            }
+        if (data !== []) {
+            setGraph(data)
         }
-    })
-    
-    
+    },[data])
+    f[0].data = graph
+    console.log(f)
+
     return(
     <ResponsiveLine
     data={f}

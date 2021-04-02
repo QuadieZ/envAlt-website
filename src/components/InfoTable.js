@@ -70,7 +70,6 @@ export const CustomerTable = ({ data }) => {
 
     },[data])
 
-
     return (
         <InfoTable column="Number of People" color="#9EEFDC">
             {customer.map((el) => {

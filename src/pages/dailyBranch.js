@@ -24,7 +24,7 @@ const tempData =
             // }
         ],
         "estimation_co2": [],
-        "graphData": []
+        "data": []
     }
 
 const dailyBranchService = new DailyBranchService();
@@ -35,7 +35,7 @@ const DailyBranch = () => {
     const [branchId, setBranchId] = useState("")
     const [customer, setCustomer] = useState(tempData.customer_record)
     const [carbon, setCarbon] = useState(tempData.estimation_co2)
-    const [graph, setGraph] = useState(tempData.graphData)
+    const [graph, setGraph] = useState(tempData.data)
 
     useEffect(() => {
         if (branchId === "") {
@@ -45,7 +45,9 @@ const DailyBranch = () => {
                 setBranchId(info.branchid)
                 setCustomer(info.customer_record)
                 setCarbon(info.estimation_co2)
-                setGraph(info.graphData)
+                setGraph(info.data)
+                console.log(info.estimation_co2)
+                console.log(info.data)
             }
             fetchData();
         }
@@ -74,7 +76,7 @@ const DailyBranch = () => {
                 <VStack width="70vw" align="flex-start">
                     <Text fontSize="xl">Estimation CO2 Release(หน่วย?)</Text>
                     <div style={{ height: 500, width: "100%", backgroundColor: "white" }}>
-                        <Line d={graph} />
+                        <Line data={graph} />
                     </div>
                 </VStack>
 
