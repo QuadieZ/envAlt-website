@@ -24,7 +24,7 @@ const tempData =
             // }
         ],
         "estimation_co2": [],
-        "data": []
+        "graphData": []
     }
 
 const dailyBranchService = new DailyBranchService();
@@ -35,7 +35,7 @@ const DailyBranch = () => {
     const [branchId, setBranchId] = useState("")
     const [customer, setCustomer] = useState(tempData.customer_record)
     const [carbon, setCarbon] = useState(tempData.estimation_co2)
-    const [graph, setGraph] = useState(tempData.data)
+    const [graph, setGraph] = useState(tempData.graphData)
 
     useEffect(() => {
         if (branchId === "") {
@@ -45,9 +45,7 @@ const DailyBranch = () => {
                 setBranchId(info.branchid)
                 setCustomer(info.customer_record)
                 setCarbon(info.estimation_co2)
-                setGraph(info.data)
-                console.log(info.estimation_co2)
-                console.log(info.data)
+                setGraph(info.graphData)
             }
             fetchData();
         }

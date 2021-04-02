@@ -1,4 +1,5 @@
 import { HStack, Text, VStack } from "@chakra-ui/layout"
+import { useEffect, useState } from "react"
 
 const notifications = [
     {
@@ -18,9 +19,30 @@ const notifications = [
     }
 ]
 
-export const RecommendCard = () => {
+const tempData = {
+    "branchid": "",
+    "recommendation": [
+        {
+            "date": "",
+            "time": "",
+            "message": []
+        },
+    ],
+}
+
+
+export const RecommendCard = ({data}) => {
+    const [recom, setRecom] = useState(tempData.recommendation)
+    console.log(data)
+    useEffect(() => {
+        if (data !== []) {
+            setRecom(data)
+        }
+
+    },[data])
+    
     return (
-        notifications.map((noti, index) => (
+        recom.map((noti, index) => (
             <VStack background="#F6F6F6"
                 boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
                 borderRadius="30px"
@@ -37,7 +59,7 @@ export const RecommendCard = () => {
                     <Text>{noti.time}</Text>
                 </HStack>
                 <VStack align="flex-start" pl="15%" color="#8B8585">
-                    {noti.body.map((e) => (
+                    {noti.message.map((e) => (
                         <Text fontSize="md">{e}</Text>
                     ))}
                 </VStack>
